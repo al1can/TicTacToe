@@ -64,12 +64,12 @@ class TicTacToe:
         if is_won:return is_won
 
         return is_won
-    # Print table
+    # Print the table
     def print_table(self):
-        for row in self.table:
-            for element in row:
-                print(f"{element} ",end="")
-            print("\n")
+        for i, row in enumerate(self.table):
+            print(" ", end="")
+            print(*row,sep=" | ")
+            if i!=2: print('---+---+---') 
     # Pick a random player
     def random_player(self):
         player = random.choice(['X','O'])
@@ -123,14 +123,16 @@ def main():
         tic_tac_toe.player_move(player)
         # Check if there is a win
         if tic_tac_toe.is_player_won(player):
+            # Print the final version of table
+            tic_tac_toe.print_table()
             print(f"player {player} is won!")
             break
         # Check if there is empty cells in the table
         if tic_tac_toe.is_table_filled():
+            # Print the final version of table
+            tic_tac_toe.print_table()
             print("It is a draw!")
             break
-    # Print the table last time to show the completed table
-    tic_tac_toe.print_table()
 
 if __name__ == '__main__':
     main()
